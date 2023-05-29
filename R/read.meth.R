@@ -5,7 +5,8 @@
         arrayAnnotation <- c(
             array = "IlluminaHumanMethylation450k",
             annotation = .default.450k.annotation)
-    } else if (nProbes >= 1050000 && nProbes <= 1053000) {
+   # } else if (nProbes >= 1050000 && nProbes <= 1053000) {
+    } else if (nProbes >= 1050000 && nProbes <= 1106000) {
         # NOTE: "Current EPIC scan type"
         arrayAnnotation <- c(
             array = "IlluminaHumanMethylationEPIC",
