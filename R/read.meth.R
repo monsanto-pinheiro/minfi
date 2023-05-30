@@ -5,12 +5,16 @@
         arrayAnnotation <- c(
             array = "IlluminaHumanMethylation450k",
             annotation = .default.450k.annotation)
-   # } else if (nProbes >= 1050000 && nProbes <= 1053000) {
-    } else if (nProbes >= 1050000 && nProbes <= 1106000) {
-        # NOTE: "Current EPIC scan type"
+    } else if (nProbes >= 1050000 && nProbes <= 1053000) {
+        # NOTE: "EPIC v1 scan type"
         arrayAnnotation <- c(
-            array = "IlluminaHumanMethylationEPIC",
+            array = "IlluminaHumanMethylationEPICv2",
             annotation = .default.epic.annotation)
+    } else if (nProbes >= 1100000 && nProbes <= 1106000) {
+        # NOTE: "EPIC v2 scan type"
+        arrayAnnotation <- c(
+            array = "IlluminaHumanMethylationEPICv2",
+            annotation = .default.epicv2.annotation)
     } else if (nProbes >= 1032000 && nProbes <= 1033000) {
         # NOTE: "Old EPIC scan type"
         arrayAnnotation <- c(
