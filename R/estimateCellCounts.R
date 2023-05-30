@@ -227,6 +227,7 @@ estimateCellCounts <- function(rgSet, compositeCellType = "Blood",
                                referencePlatform = c(
                                    "IlluminaHumanMethylation450k",
                                    "IlluminaHumanMethylationEPIC",
+                                   "IlluminaHumanMethylationEPICv2",
                                    "IlluminaHumanMethylation27k"),
                                returnAll = FALSE, meanPlot = FALSE,
                                verbose = TRUE, ...) {
