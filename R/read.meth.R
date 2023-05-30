@@ -8,7 +8,7 @@
     } else if (nProbes >= 1050000 && nProbes <= 1053000) {
         # NOTE: "EPIC v1 scan type"
         arrayAnnotation <- c(
-            array = "IlluminaHumanMethylationEPICv2",
+            array = "IlluminaHumanMethylationEPIC",
             annotation = .default.epic.annotation)
     } else if (nProbes >= 1100000 && nProbes <= 1106000) {
         # NOTE: "EPIC v2 scan type"
