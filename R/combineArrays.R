@@ -3,20 +3,24 @@
 .getAnnotationFromOutType <- function(outType = c(
     "IlluminaHumanMethylation450k",
     "IlluminaHumanMethylationEPIC",
+    "IlluminaHumanMethylationEPICv2",
     "IlluminaHumanMethylation27k")) {
     outType <- match.arg(outType)
     if (outType == "IlluminaHumanMethylation450k") {
         anno <-  .default.450k.annotation
     } else if (outType == "IlluminaHumanMethylation27k") {
         anno <- .default.27k.annotation
-    } else {
+    } else if (outType == "IlluminaHumanMethylationEPIC") {
         anno <- .default.epic.annotation
+    } else {
+        anno <- .default.epicv2.annotation
     }
     c(array = outType, annotation = anno)
 }
 
 .getLociFromOutType <- function(outType = c("IlluminaHumanMethylation450k",
                                             "IlluminaHumanMethylationEPIC",
+                                            "IlluminaHumanMethylationEPICv2",
                                             "IlluminaHumanMethylation27k")) {
     outType <- match.arg(outType)
     manifest <- getManifest(outType)
@@ -29,12 +33,13 @@
 # Convert the rgSet into the outType array.
 .convertArray_450k_epic <- function(rgSet,
                                     outType = c("IlluminaHumanMethylation450k",
-                                                "IlluminaHumanMethylationEPIC"),
+                                                "IlluminaHumanMethylationEPIC",
+                                                "IlluminaHumanMethylationEPICv2"),
                                     verbose = verbose) {
 
     outType <- match.arg(outType)
     .isRGOrStop(rgSet)
-    stopifnot(.is450k(rgSet) || .isEPIC(rgSet))
+    stopifnot(.is450k(rgSet) || .isEPIC(rgSet) || .isEPICv2(rgSet))
 
     array <- annotation(rgSet)["array"]
     if (array == outType) stop("'rgSet' already in the 'outType' array type.")
@@ -130,7 +135,8 @@ setMethod(
     signature(object1 = "RGChannelSet", object2 = "RGChannelSet"),
     function(object1, object2,
              outType = c("IlluminaHumanMethylation450k",
-                         "IlluminaHumanMethylationEPIC"),
+                         "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2"),
              verbose = TRUE) {
 
         outType <- match.arg(outType)
@@ -161,6 +167,7 @@ setMethod("combineArrays",
           function(object1, object2,
                    outType = c("IlluminaHumanMethylation450k",
                                "IlluminaHumanMethylationEPIC",
+                               "IlluminaHumanMethylationEPICv2",
                                "IlluminaHumanMethylation27k"),
                    verbose = TRUE) {
 
@@ -192,6 +199,7 @@ setMethod("combineArrays",
           function(object1, object2,
                    outType = c("IlluminaHumanMethylation450k",
                                "IlluminaHumanMethylationEPIC",
+                               "IlluminaHumanMethylationEPICv2",
                                "IlluminaHumanMethylation27k"),
                    verbose = TRUE) {
 
@@ -224,6 +232,7 @@ setMethod(
     function(object1, object2,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
@@ -263,6 +272,7 @@ setMethod(
     function(object1, object2,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
@@ -299,7 +309,8 @@ setMethod(
     signature(object = "RGChannelSet"),
     function(object,
              outType = c("IlluminaHumanMethylation450k",
-                         "IlluminaHumanMethylationEPIC"),
+                         "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2"),
              verbose = TRUE) {
 
         outType <- match.arg(outType)
@@ -319,6 +330,7 @@ setMethod(
     function(object,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
@@ -341,6 +353,7 @@ setMethod(
     function(object,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
@@ -363,6 +376,7 @@ setMethod(
     function(object,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
@@ -386,6 +400,7 @@ setMethod(
     function(object,
              outType = c("IlluminaHumanMethylation450k",
                          "IlluminaHumanMethylationEPIC",
+                         "IlluminaHumanMethylationEPICv2",
                          "IlluminaHumanMethylation27k"),
              verbose = TRUE) {
 
